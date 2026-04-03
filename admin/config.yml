@@ -1,8 +1,10 @@
 backend:
   name: git-gateway
   branch: main
+
 media_folder: "admin"
 public_folder: "admin"
+
 collections:
   - name: "parfums"
     label: "العطور"
