@@ -10,9 +10,10 @@ collections:
     label: "العطور"
     folder: "admin/products"
     create: true
-    fields:
+   fields:
       - {label: "اسم العطر", name: "title", widget: "string"}
       - {label: "السعر", name: "price", widget: "number"}
+      - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
-      - {label: "وصف العطر", name: "body", widget: "markdown"}
-- {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "للجنسين"]}
+      - {label: "الوصف", name: "body", widget: "markdown"}
+
