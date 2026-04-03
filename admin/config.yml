@@ -12,8 +12,8 @@ collections:
     create: true
     fields:
       - {label: "اسم العطر", name: "title", widget: "string"}
-      - {label: "السعر", name: "price", widget: "number"}
-      - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "للجنسين"]}
+      - {label: "السعر بالدينار", name: "price", widget: "number"}
+      - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "عطور معتقة", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
-      - {label: "الوصف", name: "body", widget: "markdown"}
+      - {label: "وصف العطر", name: "body", widget: "markdown"}
       
