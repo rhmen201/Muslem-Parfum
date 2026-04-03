@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github  
+  repo: rhmen201/Muslem-Parfum 
   branch: main
 
 media_folder: "admin/images"
@@ -16,4 +17,3 @@ collections:
       - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "عطور معتقة", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
       - {label: "وصف العطر", name: "body", widget: "markdown"}
-      
