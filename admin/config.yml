@@ -1,6 +1,6 @@
 backend:
-  name: github  
-  repo: rhmen201/Muslem-Parfum 
+  name: github
+  repo: rhmen201/Muslem-Parfum
   branch: main
 
 media_folder: "admin/images"
@@ -13,7 +13,8 @@ collections:
     create: true
     fields:
       - {label: "اسم العطر", name: "title", widget: "string"}
-      - {label: "السعر بالدينار", name: "price", widget: "number"}
+      - {label: "السعر", name: "price", widget: "number"}
       - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "عطور معتقة", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
       - {label: "وصف العطر", name: "body", widget: "markdown"}
+      
