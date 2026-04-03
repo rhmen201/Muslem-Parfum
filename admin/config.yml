@@ -1,0 +1,18 @@
+backend:
+  name: github
+  repo: rhmen201/Muslem-Parfum # اسم حسابك ومشروعك على جيت هاب
+  branch: main # الفرع الرئيسي للموقع
+
+media_folder: "images" # المجلد الذي ستُحفظ فيه صور العطور تلقائياً
+public_folder: "/images"
+
+collections:
+  - name: "parfums"
+    label: "العطور"
+    folder: "content/parfums" # مكان حفظ بيانات العطور الجديدة
+    create: true # للسماح لك بإضافة عطر جديد دائماً
+    fields:
+      - {label: "اسم العطر", name: "title", widget: "string"}
+      - {label: "السعر بالدينار", name: "price", widget: "number"}
+      - {label: "صورة العطر", name: "image", widget: "image"}
+      - {label: "وصف العطر (اختياري)", name: "body", widget: "markdown"}
