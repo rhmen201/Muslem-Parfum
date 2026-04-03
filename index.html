@@ -249,6 +249,36 @@ src="https://www.facebook.com/tr?id=1683065569320836&ev=PageView&noscript=1"
         <div id="aged-perfumes-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; padding: 20px;">
             </div>
     </div>
+    <script>
+async function loadProducts() {
+  const res = await fetch('https://api.github.com/repos/rhmen201/Muslem-Parfum/contents/admin/products');
+  const files = await res.json();
+
+  files.forEach(async file => {
+    const data = await (await fetch(file.download_url)).text();
+    
+    // استخراج المعلومات
+    const title = data.match(/title: (.*)/)?.[1]?.replace(/['"]/g, "");
+    const cat = data.match(/category: (.*)/)?.[1]?.replace(/['"]/g, "");
+    const price = data.match(/price: (.*)/)?.[1];
+    const img = data.match(/image: (.*)/)?.[1]?.replace(/['"]/g, "");
+
+    const html = `<div class="card">
+                    <img src="${img}" width="100%">
+                    <h3>${title}</h3>
+                    <p>${price} دج</p>
+                    <button>طلب الآن</button>
+                  </div>`;
+
+    // التوزيع التلقائي حسب اختيارك في لوحة التحكم
+    if (cat === "رجالي") document.getElementById('mens-section').innerHTML += html;
+    if (cat === "نسائي") document.getElementById('womens-section').innerHTML += html;
+    if (cat === "عطور معتقة") document.getElementById('aged-section').innerHTML += html;
+    if (cat === "للجنسين") document.getElementById('unisex-section').innerHTML += html;
+  });
+}
+loadProducts();
+</script>
 </section>
 </div>
 
@@ -598,35 +628,6 @@ async function loadAllPerfumes() {
                 </div>
                 
 </script>
-    <script>
-async function loadProducts() {
-  const res = await fetch('https://api.github.com/repos/rhmen201/Muslem-Parfum/contents/admin/products');
-  const files = await res.json();
-
-  files.forEach(async file => {
-    const data = await (await fetch(file.download_url)).text();
-    
-    // استخراج المعلومات
-    const title = data.match(/title: (.*)/)?.[1]?.replace(/['"]/g, "");
-    const cat = data.match(/category: (.*)/)?.[1]?.replace(/['"]/g, "");
-    const price = data.match(/price: (.*)/)?.[1];
-    const img = data.match(/image: (.*)/)?.[1]?.replace(/['"]/g, "");
-
-    const html = `<div class="card">
-                    <img src="${img}" width="100%">
-                    <h3>${title}</h3>
-                    <p>${price} دج</p>
-                    <button>طلب الآن</button>
-                  </div>`;
-
-    // التوزيع التلقائي حسب اختيارك في لوحة التحكم
-    if (cat === "رجالي") document.getElementById('mens-section').innerHTML += html;
-    if (cat === "نسائي") document.getElementById('womens-section').innerHTML += html;
-    if (cat === "عطور معتقة") document.getElementById('aged-section').innerHTML += html;
-    if (cat === "للجنسين") document.getElementById('unisex-section').innerHTML += html;
-  });
-}
-loadProducts();
 </script>
 </body>
 </html>
