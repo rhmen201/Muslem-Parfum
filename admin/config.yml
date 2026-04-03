@@ -10,10 +10,10 @@ collections:
     label: "العطور"
     folder: "admin/products"
     create: true
-    slug: "{{title}}"
     fields:
       - {label: "اسم العطر", name: "title", widget: "string"}
       - {label: "السعر", name: "price", widget: "number"}
       - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
       - {label: "الوصف", name: "body", widget: "markdown"}
+      
