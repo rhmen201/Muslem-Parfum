@@ -601,21 +601,7 @@ async function loadAllPerfumes() {
                     <small style="display:block; margin-bottom:10px; color:#888;">${category}</small>
                     <button style="width:100%; padding:8px; background:#222; color:#fff; border:none; border-radius:5px;">اطلب الآن</button>
                 </div>
-            `;
-
-            // التوزيع الذكي
-            if (category.trim() === "عطور معتقة") {
-                if(agedGrid) agedGrid.innerHTML += card;
-            } else {
-                // أي تصنيف آخر (رجالي، نسائي، للجنسين) يذهب للقسم الرئيسي
-                if(mainGrid) mainGrid.innerHTML += card;
-            }
-        }
-    } catch (error) {
-        console.error("خطأ في تحميل العطور:", error);
-    }
-}
-loadAllPerfumes();
+          
 </script>
 </body>
 </html>
