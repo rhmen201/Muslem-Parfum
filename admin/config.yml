@@ -2,18 +2,18 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "admin"
-public_folder: "admin"
+media_folder: "admin/images"
+public_folder: "/admin/images"
 
 collections:
   - name: "parfums"
     label: "العطور"
     folder: "admin/products"
     create: true
-   fields:
+    slug: "{{title}}"
+    fields:
       - {label: "اسم العطر", name: "title", widget: "string"}
       - {label: "السعر", name: "price", widget: "number"}
       - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
       - {label: "الوصف", name: "body", widget: "markdown"}
-
