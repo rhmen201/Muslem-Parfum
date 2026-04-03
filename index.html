@@ -568,6 +568,54 @@ ${itemsText}
 
     filterProducts('all', document.querySelector('.tab-btn'));
 </script>
+<script>
+async function loadAllPerfumes() {
+    try {
+        const response = await fetch('https://api.github.com/repos/rhmen201/Muslem-Parfum/contents/admin/products');
+        const files = await response.json();
+        
+        const agedGrid = document.getElementById('aged-perfumes-grid');
+        const mainGrid = document.getElementById('perfumes-grid');
 
+        // تنظيف الأقسام قبل التحميل لتجنب التكرار
+        if(agedGrid) agedGrid.innerHTML = '';
+        if(mainGrid) mainGrid.innerHTML = '';
+
+        for (const file of files) {
+            if (file.name === '.gitkeep') continue; // تجاهل ملفات النظام
+
+            const res = await fetch(file.download_url);
+            const text = await res.text();
+            
+            // استخراج البيانات بدقة
+            const title = text.match(/title: (.*)/)?.[1]?.replace(/['"]/g, "") || "عطر";
+            const category = text.match(/category: (.*)/)?.[1]?.replace(/['"]/g, "") || "";
+            const price = text.match(/price: (.*)/)?.[1] || "---";
+            const image = text.match(/image: (.*)/)?.[1]?.replace(/['"]/g, "") || "";
+
+            const card = `
+                <div class="perfume-card" style="border:1px solid #ddd; padding:15px; border-radius:10px; text-align:center; background:#fff;">
+                    <img src="${image}" style="width:100%; height:180px; object-fit:cover; border-radius:5px;">
+                    <h3 style="margin:10px 0; font-size:1.1rem;">${title}</h3>
+                    <p style="color:#b8860b; font-weight:bold;">${price} دج</p>
+                    <small style="display:block; margin-bottom:10px; color:#888;">${category}</small>
+                    <button style="width:100%; padding:8px; background:#222; color:#fff; border:none; border-radius:5px;">اطلب الآن</button>
+                </div>
+            `;
+
+            // التوزيع الذكي
+            if (category.trim() === "عطور معتقة") {
+                if(agedGrid) agedGrid.innerHTML += card;
+            } else {
+                // أي تصنيف آخر (رجالي، نسائي، للجنسين) يذهب للقسم الرئيسي
+                if(mainGrid) mainGrid.innerHTML += card;
+            }
+        }
+    } catch (error) {
+        console.error("خطأ في تحميل العطور:", error);
+    }
+}
+loadAllPerfumes();
+</script>
 </body>
 </html>
