@@ -8,12 +8,13 @@ public_folder: "/admin/images"
 
 collections:
   - name: "parfums"
-    label: "العطور"
+    label: "إضافة عطر جديد"
     folder: "admin/products"
     create: true
+    slug: "{{title}}"
     fields:
       - {label: "اسم العطر", name: "title", widget: "string"}
-      - {label: "السعر", name: "price", widget: "number"}
+      - {label: "السعر (دج)", name: "price", widget: "number"}
       - {label: "التصنيف", name: "category", widget: "select", options: ["رجالي", "نسائي", "عطور معتقة", "للجنسين"]}
       - {label: "الصورة", name: "image", widget: "image"}
       - {label: "وصف العطر", name: "body", widget: "markdown"}
